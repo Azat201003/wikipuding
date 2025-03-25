@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - 80:8080
+    networks:
+      - mynet
+    container_name: server
+    hostname: server
+    depends_on:
+      - db
+    deploy:
+      restart_policy:
+        condition: on-failure
+    
+    # ???
+    # command: ["sh", "-c", "until nc -z db 5432; do echo waiting for db; sleep 2; done; ./wikipuding"]
+
+  db:
+    image: postgres:14
+    restart: always
+    networks:
+      - mynet
+    environment:
+      POSTGRES_USER: wiki
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: wiki
+    ports:
+      - 5432:5432
+      - 8080:8080
+    volumes:
+      - roach:/data
+    command: psql -U wiki -d wiki
+
+
+
+networks:
+  mynet:
+    driver: bridge
+
+volumes:
+  roach:
