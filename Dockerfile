@@ -8,6 +8,6 @@ RUN chmod +x /app/wikipuding
 # RUN apk update --no-cache && apk add --no-cache tzdata
 # RUN apk add git make libc6-compat
 
-# EXPOSE 8000
+EXPOSE 8000
 
 CMD ./wikipuding

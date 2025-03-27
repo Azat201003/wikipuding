@@ -1,0 +1,5 @@
+2025/03/27 23:14:44 GET /
+2025/03/27 23:14:49 GET /wiki/
+2025/03/27 23:15:01 GET /wiki/:id/ aticle id: 18
+2025/03/27 23:15:04 GET /wiki/:id/suggestions/ article id: 18
+2025/03/27 23:15:15 GET /wiki/:id/ aticle id: 21

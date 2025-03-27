@@ -5,9 +5,9 @@ services:
     build:
       context: .
     ports:
-      - 80:8080
+      - 8080:8080
     networks:
-      - mynet
+      - wikinet
     container_name: server
     hostname: server
     depends_on:
@@ -23,7 +23,7 @@ services:
     image: postgres:14
     restart: always
     networks:
-      - mynet
+      - wikinet
     environment:
       POSTGRES_USER: wiki
       POSTGRES_PASSWORD: 1234
@@ -35,10 +35,22 @@ services:
       - roach:/data
     command: psql -U wiki -d wiki
 
+  cache:
+    image: redis
+    restart: always
+    networks:
+      - wikinet
+    ports:
+      - 5432:5432
+      - 8080:8080
+    volumes:
+      - roach:/data
+    command: redis-cli
+
 
 
 networks:
-  mynet:
+  wikinet:
     driver: bridge
 
 volumes:
