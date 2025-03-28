@@ -96,3 +96,36 @@
 2025/03/28 20:39:09 GET /wiki/:id/	aticle id: 18
 2025/03/28 20:39:37 GET /wiki/:id/suggestions/	article id: 18
 2025/03/28 20:39:42 GET /wiki/:id/	aticle id: 21
+2025/03/28 21:03:45 GET	/users/
+2025/03/28 21:03:50 GET /users/:id/	user id: 0
+2025/03/28 21:09:08 GET /users/:id/	user id: 0
+2025/03/28 21:09:40 GET /users/:id/	user id: 0
+2025/03/28 21:13:47 GET /users/:id/	user id: 10
+2025/03/28 21:15:23 GET /users/:id/	user id: 10
+2025/03/28 21:18:44 GET /
+2025/03/28 21:22:37 GET /wiki/
+2025/03/28 21:23:41 GET /wiki/
+2025/03/28 21:23:51 GET /wiki/:id/	aticle id: 26
+2025/03/28 21:24:07 GET /wiki/:id/suggestions/	article id: 26
+2025/03/28 21:24:22 GET /wiki/:id/	aticle id: 27
+2025/03/28 21:24:25 GET /wiki/:id/suggestions/	article id: 27
+2025/03/28 21:24:38 GET	/users/
+2025/03/28 21:25:08 GET /users/:id/	user id: 11
+2025/03/28 21:25:17 GET /wiki/:id/	aticle id: 27
+2025/03/28 21:25:21 GET /wiki/:id/suggestions/	article id: 27
+2025/03/28 21:27:05 GET /
+2025/03/28 21:27:32 GET /wiki/
+2025/03/28 21:27:43 GET /wiki/:id/	aticle id: 19
+2025/03/28 21:28:20 POST /wiki/:id/like/	article id: 19 user id: 10 like added
+2025/03/28 21:28:29 GET /wiki/:id/	aticle id: 19
+2025/03/28 21:28:43 POST /wiki/:id/like/	article id: 19 user id: 10 like already was added
+2025/03/28 21:28:50 GET /wiki/:id/	aticle id: 19
+2025/03/28 21:29:05 POST /wiki/:id/like/	article id: 19 user id: 11 like added
+2025/03/28 21:29:08 GET /wiki/:id/	aticle id: 19
+2025/03/28 21:29:32 GET /wiki/:id/	aticle id: 18
+2025/03/28 21:29:37 GET /wiki/:id/suggestions/	article id: 18
+2025/03/28 21:29:41 GET /wiki/:id/	aticle id: 24
+2025/03/28 21:30:18 GET /wiki/:id/	aticle id: 18
+2025/03/28 21:30:50 GET /wiki/:id/	error with parsing id: strconv.Atoi: parsing "asfd": invalid syntax
+2025/03/28 21:31:10 GET /wiki/:id/	error with getting article: record not found
+2025/03/28 21:31:39 GET /wiki/

@@ -27,6 +27,18 @@ func generateToken() string {
 	return "token3"
 }
 
+func GetByToken(db *gorm.DB, token string) (*User, error) {
+	user := new(User)
+	err := db.Take(user, &User{Token: token}).Error
+	return user, err
+}
+
+func GetById(db *gorm.DB, id uint) (*User, error) {
+	user := new(User)
+	err := db.Take(&user, User{ID: id}).Error
+	return user, err
+}
+
 func Init(e *echo.Echo, db *gorm.DB) {
 
 	e.POST("/auth/sign-up/", func(c echo.Context) error {

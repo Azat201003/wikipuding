@@ -1,10 +1,12 @@
-ideas:
-  commentaries:
-  notifications:
-    - when suggest your post smth
-    - when sm one comment on your post
-  tags:
-  recomendations:
-  logging:
-    - for database tx.Error
-  add config for controlling services address and another:
+commentaries:
+notifications:
+  - when suggest your post smth
+  - when sm one comment on your post
+tags:
+search:
+  - by tags
+recomendations:
+logging:
+  - for database tx.Error
+add config for controlling services address and another:
+deleting:

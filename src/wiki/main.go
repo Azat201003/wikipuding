@@ -28,8 +28,7 @@ func Init(e *echo.Echo, db *gorm.DB, ctx context.Context, client *redis.Client) 
 			log.Printf("POST /wiki/\terror with parsing headers: %v\n", err.Error())
 			return err
 		}
-		creator := new(auth.User)
-		err := db.First(creator, &auth.User{Token: article_create.Token}).Error
+		creator, err := auth.GetByToken(db, article_create.Token)
 		if err != nil {
 			log.Printf("POST /wiki/\terror with finding user: %v\n", err)
 			return err

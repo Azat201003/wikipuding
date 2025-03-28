@@ -8,6 +8,7 @@ import (
 	"net/http"
 
 	"github.com/Azat201003/wikipuding/src/auth"
+	"github.com/Azat201003/wikipuding/src/likes"
 	"github.com/Azat201003/wikipuding/src/suggestions"
 	"github.com/Azat201003/wikipuding/src/users"
 	"github.com/Azat201003/wikipuding/src/wiki"
@@ -56,13 +57,14 @@ func main() {
 	wiki.Init(e, db, ctx, client)
 
 	// * users
-	users.Init(e, db)
+	users.Init(e, db, ctx, client)
 
 	// * likes
-
+	likes.Init(e, db, ctx, client)
 	e.Logger.Fatal(e.Start(":1323"))
 
 }
+
 /*
 ------------------------------------------------------------------------------
 File                                       blank        comment           code
