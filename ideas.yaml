@@ -7,3 +7,4 @@ ideas:
   recomendations:
   logging:
     - for database tx.Error
+  add config for controlling services address and another:

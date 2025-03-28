@@ -1,7 +1,7 @@
 FROM alpine
 
 WORKDIR /app
-COPY wikipuding .
+COPY /src/wikipuding .
 
 # EXPOSE 8080
 RUN chmod +x /app/wikipuding
