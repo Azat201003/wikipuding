@@ -6,3 +6,4 @@ ideas:
   tags:
   recomendations:
   logging:
+    - for database tx.Error
