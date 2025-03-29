@@ -61,7 +61,6 @@ func Init(e *echo.Echo, db *gorm.DB, ctx context.Context, client *redis.Client) 
 		count_likes := -1
 		user := auth.User{}
 		err = db.Take(&user, &auth.User{Token: like_post.Token}).Error
-		fmt.Println(like_post.Token, user.Username)
 		if like_post.Token == "" {
 			log.Printf("POST /wiki/:id/like/\terror with finding user: empty token\n")
 			return err

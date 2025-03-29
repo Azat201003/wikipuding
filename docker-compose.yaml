@@ -4,6 +4,7 @@ services:
   app:
     build:
       context: .
+      dockerfile: Dockerfile
     ports:
       - 8080:8080
     networks:
@@ -12,40 +13,55 @@ services:
     hostname: server
     depends_on:
       - db
+      - cache
     deploy:
       restart_policy:
         condition: on-failure
+    volumes:
+      - ./app/main.log:/app/main.log
     
     # ???
     # command: ["sh", "-c", "until nc -z db 5432; do echo waiting for db; sleep 2; done; ./wikipuding"]
 
   db:
-    image: postgres:14-alpine
-    restart: always
+    image: postgres:latest
     networks:
       - wikinet
     environment:
       POSTGRES_USER: wiki
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: wiki
+      PGDATA: /var/lib/postgresql/data/pgdata
+      # POSTGRES_HOST_AUTH_METHOD: md5
     ports:
       - 5432:5432
-      - 8080:8080
     volumes:
-      - roach:/data
-    command: psql -U wiki -d wiki
+      - ./data:/var/lib/postgresql/data
+      - ./dumps/init_db.sql:/docker-entrypoint-initdb.d/init.sql
+    shm_size: 128mb
+    # stdin_open: true
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wiki -d wiki"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+    hostname: db
+    # command: []
 
   cache:
-    image: redis
+    image: redis:latest
     restart: always
     networks:
       - wikinet
     ports:
-      - 5432:5432
-      - 8080:8080
-    volumes:
-      - roach:/data
-    command: redis-cli
+      - 1234:6379
+    environment:
+      - REDIS_PASSWORD=1234
+      - REDIS_PORT=6379
+      - REDIS_USER_PASSWORD=1234
+    hostname: cache
 
 
 
@@ -54,4 +70,4 @@ networks:
     driver: bridge
 
 volumes:
-  roach:
+  dumps:

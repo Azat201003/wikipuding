@@ -1,13 +1,15 @@
+FROM golang:latest AS builder
+
+WORKDIR /build/
+COPY src .
+RUN CGO_ENABLED=0 GOOS=linux go build -o ./main ./main.go
+
 FROM alpine
 
-WORKDIR /app
-COPY /wikipuding .
-
-# EXPOSE 8080
-RUN chmod +x /app/wikipuding
-# RUN apk update --no-cache && apk add --no-cache tzdata
-# RUN apk add git make libc6-compat
+WORKDIR /app/src
+COPY --from=builder /build/main .
+RUN chmod +x main
 
 EXPOSE 8080
 
-CMD ./wikipuding
+CMD /app/src/main
